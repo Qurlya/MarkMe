@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, #57b9ff, #ee6ef5);
+}
+.login {
+    display: flex;
+    justify-content: center;
+    width: 320px;
+    height: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.login .form {
+    width: 100%;
+    height: 100%;
+    padding: 0px 25px;
+}
+.login .form p {
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.login .form input {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    background: rgba(255,255,255,.5);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 0 15px;
+    color: #373131;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.login .form input:focus {
+    border: 1px solid rgba(255,255,255,.8);
+    outline: none;
+}
+::-webkit-input-placeholder {
+    color: #373131;
+}
+.login .form input.submit {
+    background: rgba(255,255,255,.9);
+    color: #444;
+    font-size: 15px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+.login .form a.registration{
+    background: rgba(255,255,255,.9);
+    display: flex;
+    color: #444;
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: bold;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 5px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+
+}

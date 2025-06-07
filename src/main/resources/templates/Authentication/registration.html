@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/registration.css">
+<body>
+
+<!--
+<div th:if="${errorOnceMessage}">
+    <p th:text="${errorOnceMessage}"></p>
+</div>
+-->
+
+<div class="registration">
+    <form action="/register" method="post" class="form">
+        <p>Регистрация</p>
+        <input type="text" id="nickname" name="nickname" placeholder="Username" required>
+        <input type="text" id="vkontakte" name="vkontakte" placeholder="Vk" required>
+        <input type="text" id="way" name="way" placeholder="Class" required>
+        <input type="password" id="pin" name="pin" placeholder="Password" required>
+        <input type="submit" value="Зарегистрироваться" class="submit">
+        <a href="/login" class="registration">Войти</a>
+    </form>
+</div>
+
+
+
+</body>
+</html>

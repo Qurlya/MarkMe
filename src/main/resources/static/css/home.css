@@ -1,0 +1,15 @@
+.target_btn_menu{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+    padding: 0 20px;
+    transition: background-color 0.3s;
+    border-color: transparent;
+    text-decoration: none;
+    justify-content: center;
+}
+.target_btn_menu:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .btn.yellow {
+            background-color: yellow !important; /* !important на случай переопределения стилей */
+        }
+    </style>
+</head>
+<body>
+<!--Регистрация / Авторизация-->
+<div class="nickname">
+    <div th:if="${nickname}">
+        <p><span th:text="${nickname}"></span></p>
+        <a href="/logout">Выйти</a>
+    </div>
+    <div th:unless="${nickname}">
+        <a href="/login">Войти</a>
+        <a href="/register">Зарегистрироваться</a>
+    </div>
+</div>
+
+<!--Выбор даты-->
+<form action="/activities_time" method="post">
+    <label>Select date: </label>
+    <input type="date" id="dateInput" name="dateInput" th:value="${currentDate}"/>
+    <button type="submit">Выбрать дату</button>
+</form>
+
+<!--Отметки-->
+<form action="/activities_mark" method="post">
+    <div class="button-container">
+        <button th:each="name : ${namesList}"
+                type="submit"
+                class="btn"
+                th:text="${name}"
+                th:name="name"
+                th:value="${name}"
+                th:classappend="${buttonsState.get(name)} ? 'yellow' : ''">
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

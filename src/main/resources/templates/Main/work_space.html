@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="nickname">
+<div th:if="${nickname}" >
+    <p>Привет, <span th:text="${nickname}"></span>!</p>
+    <a href="/logout">Выйти</a>
+</div>
+<div th:unless="${nickname}">
+    <a href="/login">Войти</a>
+    <a href="/register">Зарегистрироваться</a>
+</div>
+</div>
+<div>
+    <ul>
+        <li><a href="/activities">Активности</a></li>
+        <li><a href="">Личная посещаемость</a></li>
+        <li><a href="">Общая посещаемость</a></li>
+        <li><a href="">Все мемберы</a></li>
+        <li><a href="">Личный кабинет</a></li>
+        <li><a href="/moderation">Модерация</a></li>
+    </ul>
+</div>
+</body>
+</html>

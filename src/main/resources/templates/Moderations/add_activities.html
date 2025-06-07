@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/add_activities.css">
+</head>
+<body>
+
+<div class="shapka">
+    <div class="container_btn_menu">
+        <a href="/" class="btn_menu">Главная</a>
+        <a class="target_btn_menu">Модерация</a>
+    </div>
+    <div class="container_btn_menu">
+        <a href="/moderation/all_members" class="btn_menu">Мемберы</a>
+        <a class="target_btn_menu">Активности</a>
+        <a href="/moderation/confirm_registrations" class="btn_menu">Подтвердить<br>регистрацию</a>
+        <a href="" class="btn_menu">Галочки</a>
+    </div>
+    <div th:if="${nickname}" class="container_authentication">
+        <a href="" class="authentication" th:text="${nickname}"></a>
+        <a href="/logout" class="authentication">Выйти</a>
+    </div>
+</div>
+
+<div class="common">
+    <div class="date_activity">
+        <div class="date">
+            <form action="/activities_time_for_off" method="post">
+                <label>Select date: </label>
+                <input type="date" id="dateInput" name="dateInput" th:value="${currentDate}"/>
+                <button type="submit">Выбрать дату</button>
+            </form>
+
+        </div>
+        <div class="scroll-container">
+            <form action="/select_activities" method="post">
+                <ul>
+                    <li th:each="name : ${bossList}">
+                        <button type="submit" name="selectedName" th:value="${name}"
+                                class="scroll-btn" th:text="${name}"></button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <div class="rigth">
+        <!--<a><img th:src="${img_url}"></a>-->
+        <h1 th:if="${selectedName} == null">Активность не выбрана</h1>
+        <div th:if="${selectedName} != null">
+            <div th:if="${isExist} == false">
+                <h1>Активность не добавлена</h1>
+                <form action="/create_activities" method="post">
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

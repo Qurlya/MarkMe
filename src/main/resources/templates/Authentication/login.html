@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="login">
+    <form action="/login" method="post" class="form">
+        <p>Авторизация</p>
+        <input type="text" id="nickname" name="nickname" placeholder="Username" required>
+        <input type="password" id="pin" name="pin" placeholder="Password" required>
+        <input type="submit" value="Войти" class="submit">
+        <a href="/register" class="registration">Зарегистрироваться</a>
+    </form>
+</div>
+
+<!--<div th:if="${errorMessage}">
+    <p th:text="${errorMessage}"></p>
+</div>-->
+
+</body>
+</html>

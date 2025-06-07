@@ -1,0 +1,13 @@
+.nickname{
+    float: right;
+    text-align: right;
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #e61a1a;
+    border: none;
+    cursor: pointer;
+}
+.btn.yellow {
+    background-color: yellow;
+}

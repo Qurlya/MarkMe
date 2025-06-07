@@ -1,0 +1,24 @@
+
+.scroll-container {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    width: 15%;
+}
+
+.scroll-btn {
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10px;
+    margin: 3px;
+    background: #57b9ff;
+    border: 1px solid #373131;
+    color: white;
+    cursor: pointer;
+}
+
+.scroll-btn:hover {
+    background: #3aa0e6;
+}
