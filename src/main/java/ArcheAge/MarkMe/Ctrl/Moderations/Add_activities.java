@@ -54,8 +54,8 @@ public class Add_activities {
 
         model.addAttribute("bossList", ScheduleBosses.getScheduleBosses(currentDay));
         model.addAttribute("currentDate", currentDate);
-        session.setAttribute("currentDate", currentDate);
         model.addAttribute("nickname", nickname);
+        session.setAttribute("currentDate", currentDate);
         /*model.addAttribute("selectedName", session.getAttribute("selectedName"));*/
         return "Moderations/add_activities";
     }

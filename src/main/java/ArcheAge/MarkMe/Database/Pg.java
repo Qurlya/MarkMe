@@ -14,7 +14,6 @@ public class Pg {
     private static String password = AppConfig.getDbPassword();
 
     public static void main(String[] args) {
-        addTest(1, JsonLink.getJSON());
     }
     /*Регистрация, добавляет пользователя в БД*/
     public static void addMembers(String nickname, String vk, String way, String pin) {
