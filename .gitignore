@@ -1,0 +1,11 @@
+confing.properties
+application.properties
+*.log
+*.tmp
+
+target/
+bin/
+build/
+
+.idea/
+*.iml
