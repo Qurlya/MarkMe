@@ -24,7 +24,7 @@ public class DownloadURL {
                 String result = v.get(0).substring(1, v.get(0).length() - 1);
                 return result;}
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
         return null;
     }

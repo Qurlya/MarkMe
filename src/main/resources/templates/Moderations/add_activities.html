@@ -39,7 +39,7 @@
             <form action="/select_activities" method="post">
                 <ul>
                     <li th:each="name : ${bossList}">
-                        <button type="submit" name="selectedName" th:value="${name}"
+                        <button type="submit" name="selectedBoss" th:value="${name}"
                                 class="scroll-btn" th:text="${name}"></button>
                     </li>
                 </ul>
@@ -48,14 +48,45 @@
     </div>
     <div class="rigth">
         <!--<a><img th:src="${img_url}"></a>-->
-        <h1 th:if="${selectedName} == null">Активность не выбрана</h1>
-        <div th:if="${selectedName} != null">
-            <div th:if="${isExist} == false">
-                <h1>Активность не добавлена</h1>
-                <form action="/create_activities" method="post">
-                    <button type="submit">Добавить</button>
-                </form>
-            </div>
+        <div th:if="${statusSelect == 'notSelected'}">
+            <h1 th:if="${warningMessege == null}">Активность не выбрана</h1>
+            <h1 th:if="${warningMessege != null}" th:text="${warningMessege}"></h1>
+        </div>
+        <div th:if="${statusSelect == 'notCreated'}">
+            <h1>Активность не создана</h1>
+            <form action="/create_activities" method="post">
+                <input type="text" name="urlBoss" placeholder="Ссылка" required>
+                <input type="textarea" name="noteBoss" placeholder="Примечание">
+                <input type="checkbox" name="isPvpBoss" value="PVP" th:text="'Было бы пвп?'">
+                <input type="text" name="timeBoss" placeholder="Время убийства">
+                <button type="submit" th:text="Создать"></button>
+            </form>
+        </div>
+        <div th:if="${statusSelect == 'edit'}">
+            <h1>Измениние данных</h1>
+            <form action="/create_activities" method="post">
+                <input type="text" name="urlBoss" th:value="${urlBoss}" required>
+                <input type="textarea" name="noteBoss" th:value="${noteBoss}">
+                <input type="checkbox" name="isPvpBoss" th:value="${PvpBoss}" th:text="'Было бы пвп?'">
+                <input type="text" name="timeBoss" th:value="${timeBoss}">
+                <button type="submit" th:text="Изменить"></button>
+            </form>
+        </div>
+        <div th:if="${statusSelect == 'created'}">
+            <img th:if="${imgBoss != null}" th:src="${imgBoss}">
+            <p th:if="${imgBoss == null}" th:text="'Картинка отсутстует'"></p>
+            <p th:text="'Ссылка: ' + ${urlBoss}"></p>
+            <p th:text="'Примечание: '+ ${noteBoss}"></p>
+            <p th:text="'Время босса: '+ ${timeBoss}"></p>
+            <p th:text="'Мастер: '+ ${masterBoss}"></p>
+            <p th:text="'ПВП: '+ ${PvpBoss}"></p>
+            <p th:text="'Имя босса: '+ ${nameBoss}"></p>
+            <form action="/edit_activities" method="post">
+                <button type="submit" th:text="Изменить"></button>
+            </form>
+            <form action="/remove_activities" method="post">
+                <button type="submit" th:text="Удалить"></button>
+            </form>
         </div>
     </div>
 </div>
