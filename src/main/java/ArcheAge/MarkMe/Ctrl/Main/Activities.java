@@ -21,7 +21,8 @@ public class Activities {
     @GetMapping("/activities")
     public String getActivities(HttpSession session, Model model) {
 
-        String nickname = (String) session.getAttribute("nickname");
+        //String nickname = (String) session.getAttribute("nickname");
+        String nickname = "Курля";
         Boolean isButtonYellow = (Boolean) session.getAttribute("isButtonYellow");
         Map<String, Boolean> buttonsState = (Map<String, Boolean>) session.getAttribute("buttonsState");
         if (buttonsState == null) {
@@ -53,11 +54,8 @@ public class Activities {
     @PostMapping("/activities_time")
     public String postActivities(
             @RequestParam(name = "dateInput") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateInput,
-            RedirectAttributes redirectAttributes,
             HttpSession session
     ) {
-        // Сохраняем дату в flash атрибутах
-        redirectAttributes.addFlashAttribute("selectedDate", dateInput);
         session.setAttribute("selectedDate", dateInput);
         return "redirect:/activities";
     }

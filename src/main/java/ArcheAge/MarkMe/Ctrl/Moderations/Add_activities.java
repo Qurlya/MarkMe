@@ -1,6 +1,5 @@
 package ArcheAge.MarkMe.Ctrl.Moderations;
 
-
 import ArcheAge.MarkMe.Database.Sql;
 import ArcheAge.MarkMe.Variables.DownloadURL;
 import ArcheAge.MarkMe.Variables.JsonLink;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,7 +24,6 @@ public class Add_activities {
         String nickname = "Курля";
         boolean isCreateBoss = false;
         /*String nickname = (String) session.getAttribute("nickname");*/
-
         if(nickname == null) {
                 return "Authentication/login";
         }
@@ -41,7 +38,7 @@ public class Add_activities {
             Sql.addDateForActivities(currentDate);
         }
 
-        if (session.getAttribute("statusSelect") == null) {
+        if (session.getAttribute("statusSelect")== null) {
             session.setAttribute("statusSelect", "notSelected");
         }
 
@@ -85,7 +82,7 @@ public class Add_activities {
     }
 
     @PostMapping("/select_activities")
-    public String selectBoss(@RequestParam String selectedBoss, Model model, HttpSession session) throws SQLException {
+    public String selectBoss(@RequestParam String selectedBoss, HttpSession session) throws SQLException {
         LocalDate currentDate = (LocalDate) session.getAttribute("selectedDate");
         if (currentDate == null) {
             currentDate = LocalDate.now();
@@ -94,7 +91,6 @@ public class Add_activities {
             Sql.addDateForActivities(currentDate);
         }
         boolean isBossCreated = JsonLink.read(Sql.getReport(selectedBoss, currentDate)).getIsCreated();
-        System.out.println(isBossCreated);
         if (isBossCreated){
             Record record = JsonLink.read(Sql.getReport(selectedBoss, currentDate));
             session.setAttribute("urlBoss", record.getUrl());
@@ -117,7 +113,7 @@ public class Add_activities {
         return "redirect:/moderation/add_activities";
     }
     @PostMapping("/create_activities")
-    public String createActivities(Model model, HttpSession session, @RequestParam String urlBoss, @RequestParam String noteBoss, String isPvpBoss, String timeBoss) throws SQLException {
+    public String createActivities(HttpSession session, @RequestParam String urlBoss, @RequestParam String noteBoss, String isPvpBoss, String timeBoss) throws SQLException {
         if (session.getAttribute("selectedBoss") == null){
             session.setAttribute("statusSelect", "notSelected");
             session.setAttribute("warningMessege", "Действие не получилось. Попробуйте ещё раз!");

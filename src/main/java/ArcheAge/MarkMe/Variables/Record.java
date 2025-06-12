@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Record {
-    private List<Integer> id = List.of();
+    private List<Request> request = new ArrayList<>();
     private String url = null;
     private String note = null;
     private boolean pvp = false;
@@ -24,10 +25,10 @@ public class Record {
     private Boolean isCreated = false;
 
 
-    public void addId(int id) {
-        this.id.add(id);
+    public void addId(Request request) {
+        this.request.add(request);
     }
-    public void delId(int id) {
-        this.id.remove(id);
+    public void delId(Request request) {
+        this.request.remove(request);
     }
 }

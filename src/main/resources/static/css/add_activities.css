@@ -1,8 +1,11 @@
 .scroll-container {
+    display: flex;
     height: 95%;
     overflow-y: auto;
     border: 1px solid #373131;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 
 }
 .date_activity{
@@ -22,21 +25,26 @@
     width: 100%;
     height: 5%;
     border: 1px solid #373131;
-
 }
 .scroll-btn {
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin: 3px;
     background: #57b9ff;
     border: 1px solid #373131;
     color: white;
     cursor: pointer;
+    list-style-type: none;
 }
 
 .scroll-btn:hover {
     background: #3aa0e6;
 }
+/*
+.scroll-btn: {
+    background: #1c40df;
+}
+*/
 

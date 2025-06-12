@@ -27,13 +27,12 @@
 
 <div class="common">
     <div class="date_activity">
-        <div class="date">
+        <div class="date" >
             <form action="/activities_time_for_off" method="post">
                 <label>Select date: </label>
-                <input type="date" id="dateInput" name="dateInput" th:value="${currentDate}"/>
+                <input type="date" request="dateInput" name="dateInput" th:value="${currentDate}"/>
                 <button type="submit">Выбрать дату</button>
             </form>
-
         </div>
         <div class="scroll-container">
             <form action="/select_activities" method="post">
@@ -63,7 +62,7 @@
             </form>
         </div>
         <div th:if="${statusSelect == 'edit'}">
-            <h1>Измениние данных</h1>
+            <h1>Изменение данных</h1>
             <form action="/create_activities" method="post">
                 <input type="text" name="urlBoss" th:value="${urlBoss}" required>
                 <input type="textarea" name="noteBoss" th:value="${noteBoss}">

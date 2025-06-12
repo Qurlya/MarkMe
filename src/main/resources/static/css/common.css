@@ -12,14 +12,11 @@ body, html {
 .shapka{
     display: flex;
     width: 100%;
-    height: 80px;
+    height: 9%;
     border-bottom: 1px solid #000;
 
 }
-.common{
-    display: flex;
-    height: calc(100vh - 80px);
-}
+
 
 
 .container_btn_menu{

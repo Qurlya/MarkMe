@@ -145,7 +145,7 @@ public class Pg {
     * -4 ПВП*/
     public static void addConstRows(String tableName){
         String insertSQL = String.format("""
-                INSERT INTO "%S" (id) VALUES (-1),(-2),(-3),(-4);
+                INSERT INTO "%S" (request) VALUES (-1),(-2),(-3),(-4);
                 """, tableName);
         try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
              PreparedStatement statement = connection.prepareStatement (insertSQL)) {
@@ -161,13 +161,13 @@ public class Pg {
         String updateSQL = String.format("""
                 UPDATE "%S"
                 SET "%S" = CASE
-                WHEN id = -1 THEN ?
-                WHEN id = -2 THEN ?
-                WHEN id = -3 THEN ?
-                WHEN id = -4 THEN ?
+                WHEN request = -1 THEN ?
+                WHEN request = -2 THEN ?
+                WHEN request = -3 THEN ?
+                WHEN request = -4 THEN ?
                 ELSE "%S"
                 END
-                WHERE id IN (-1, -2, -3, -4);
+                WHERE request IN (-1, -2, -3, -4);
                 """, tableName, activity, activity);
         try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
              PreparedStatement statement = connection.prepareStatement (updateSQL)) {
