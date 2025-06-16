@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/Main/myMarks.css}">
+    <script th:src="@{/js/js1.js}" defer></script>
+
+</head>
+<body>
+<!--Регистрация / Авторизация-->
+
+<div class="shapka">
+    <div class="container_btn_menu">
+        <a href="/" class="btn_menu">Главная</a>
+        <a class="target_btn_menu">Мои галочки</a>
+        <a href="" class="btn_menu">Личная посещаемость</a>
+        <a href="" class="btn_menu">Общая посещаемость</a>
+        <a href="" class="btn_menu">Все мемберы</a>
+        <a href="/moderation/all_members" class="btn_menu">Модерация</a>
+    </div>
+
+    <div th:if="${nickname}" class="container_authentication">
+        <a href="" class="authentication" th:text="${nickname}"></a>
+        <a href="/logout" class="authentication">Выйти</a>
+    </div>
+</div>
+<!--Выбор даты-->
+<div class="div_selectDate">
+    <form action="/activities_time_for_marks" method="post" >
+        <label>Select date: </label>
+        <input type="date" request="dateInput" name="dateInput" th:value="${currentDate}"/>
+        <button type="submit">Выбрать дату</button>
+    </form>
+</div>
+<div class="div_common">
+    <!--Понедельник-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${mondayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${mondayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeFlagMark" method="post" class="boss-form">
+                            <button type="submit" class="btn_boss" th:classappend="${mondayBosses.getMap().get(nameBoss) == 'wait'} ? 'green' : ''" name="nameBoss" th:value="${mondayBosses.getDateForSql()} + '#' + ${nameBoss}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeFlagMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Вторник-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${tuesdayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${tuesdayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${tuesdayBosses.getDateBoss()}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Среда-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${wednesdayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${wednesdayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${wednesdayBosses.getDateBoss()}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Четверг-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${thursdayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${thursdayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${thursdayBosses.getDateBoss()}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Пятница-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${fridayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${fridayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${fridayBosses.getDateBoss()}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Суббота-->
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${saturdayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${saturdayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${saturdayBosses.getDateBoss()}" th:text="${nameBoss}"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Воскресеньте-->
+
+    <div class="div_dayBox">
+        <div class="div_selectDayOnBoss">
+            <p th:text="${sundayBosses.getDateBoss()}"></p>
+        </div>
+        <div class="div_bosesOneDay">
+            <ul>
+                <li th:each="nameBoss: ${sundayBosses.getNamesBosses()}">
+                    <div class="div_oneBoss">
+                        <form action="/changeMark" method="post" class="boss-form">
+                            <input type="hidden" name="imageBoss" value="hidden">
+                            <button type="submit" class="btn_boss" name="nameBoss" th:value="${sundayBosses.getDateBoss()}" th:text="'Кракен 19:30'"></button>
+                        </form>
+                        <form action="/changeMark" method="post" class="image-form">
+                            <input type="hidden" name="nameBoss" value="hidden">
+                            <button type="button" class="btn_image">?</button></form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="infoBoss">
+
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img th:src="${imageBoss}" alt="">
+    </div>
+
+</div>
+
+</body>
+</html>

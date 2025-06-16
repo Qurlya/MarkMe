@@ -1,4 +1,4 @@
-package ArcheAge.MarkMe.Variables;
+package ArcheAge.MarkMe.Ctrl.Helpyshka;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

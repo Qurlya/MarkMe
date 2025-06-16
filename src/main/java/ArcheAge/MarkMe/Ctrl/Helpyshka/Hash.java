@@ -1,4 +1,4 @@
-package ArcheAge.MarkMe.Variables;
+package ArcheAge.MarkMe.Ctrl.Helpyshka;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -11,11 +11,13 @@ public class Hash {
         String hashedPassword = BCrypt.hashpw(password, salt);
         System.out.println(hashedPassword);
         // Проверяем пароль
-        if (BCrypt.checkpw(password, hashedPassword)) {
+        /*if (BCrypt.checkpw(password, hashedPassword)) {
             System.out.println("Пароль верный");
         } else {
+        $2a$10$Po10Gxu7MuqyOZhnqrEz9.AdzVnwMSy3Q/APpKPKNy6V/Epi2f41O
+        $2a$10$0rvHx8/fjeLpU3IcOgUSVuONCGEVsfbQmfw.dX4ROh1fniIABVtV6
+
             System.out.println("Пароль неверный");
-        }
-        System.out.println("$2a$10$6w94T9gyuHYTqF0yofB55em8vfN85B50OgYNeWxvNFypVDxJBF3Aq" == "$2a$10$dPzoSZisU8zyFNcTMxzpaOWzZt469.E2AWzboQ6AEu0/t1VtkkfxW");
+        }*/
     }
 }

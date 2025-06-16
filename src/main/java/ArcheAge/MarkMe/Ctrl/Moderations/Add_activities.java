@@ -1,8 +1,8 @@
 package ArcheAge.MarkMe.Ctrl.Moderations;
 
 import ArcheAge.MarkMe.Database.Sql;
-import ArcheAge.MarkMe.Variables.DownloadURL;
-import ArcheAge.MarkMe.Variables.JsonLink;
+import ArcheAge.MarkMe.Ctrl.Helpyshka.DownloadURL;
+import ArcheAge.MarkMe.Ctrl.Helpyshka.JsonLink;
 import ArcheAge.MarkMe.Variables.Record;
 import ArcheAge.MarkMe.Variables.ScheduleBosses;
 import jakarta.servlet.http.HttpSession;
@@ -104,6 +104,7 @@ public class Add_activities {
             session.setAttribute("timeBoss", record.getBossTime());
             session.setAttribute("masterBoss", record.getMaster());
             session.setAttribute("nameBoss", record.getNameBoss());
+
             session.setAttribute("statusSelect", "created");
         } else {
             session.setAttribute("statusSelect", "notCreated");
@@ -131,6 +132,8 @@ public class Add_activities {
         record.setMaster((String) session.getAttribute("nickname")); //TODO: Поменять ник на ID master
         record.setNameBoss(selectedBoss);
         record.setIsCreated(true);
+        record.setDateBoss(String.valueOf(selectedDate));
+        record.setNameBoss(selectedBoss);
 
         session.setAttribute("urlBoss", record.getUrl());
         session.setAttribute("createdBoss", record.getIsCreated());

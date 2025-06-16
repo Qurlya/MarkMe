@@ -23,6 +23,6 @@ public class ScheduleBosses {
         }
     }
     public static String[] getScheduleBosses(String day) {
-        return bossName.get(day);
+        return bossName.get(day.toUpperCase());
     }
 }

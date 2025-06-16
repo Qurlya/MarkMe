@@ -1,7 +1,5 @@
 package ArcheAge.MarkMe.Database;
 
-import ArcheAge.MarkMe.Variables.JsonLink;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
